@@ -32,7 +32,7 @@ local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 
 local scripts = {
-    {"Grab The Foodzik", "https://pastefy.app/12AfdUbj/raw"}, 
+    {"Grab The Foodzik", "https://pastefy.app/12AfdUbj/raw"},
     {"Afk For Ugc By:HoneyJuku", "https://pastefy.app/kPHrBG5v/raw"},
     {"Gogo Climb", "https://pastefy.app/un4d5Ess/raw"},
     {"Пятёрочка: АмНямания 2", "https://pastefy.app/9i5OcfGS/raw"},
