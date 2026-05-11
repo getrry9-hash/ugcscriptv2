@@ -32,6 +32,7 @@ local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 
 local scripts = {
+    {"BBC Bitsize Planet Planners", "https://pastefy.app/ROQHD7Ws/raw"},
     {"Free UGC Rewards Obby", "https://pastefy.app/onaXzv8k/raw"},
     {"Free UGC Rewards Boy Hair Obby", "https://pastefy.app/owXhG3Sx/raw"},
     {"Free Ugc Rewards Obby Valk", "https://pastefy.app/dyJXwnAu/raw"},
