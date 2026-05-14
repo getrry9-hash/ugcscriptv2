@@ -1,1 +1,449 @@
-print("banwave")
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local MainCorner = Instance.new("UICorner")
+local InnerFrame = Instance.new("Frame")
+local InnerCorner = Instance.new("UICorner")
+local SideFrame = Instance.new("Frame")
+local SideCorner = Instance.new("UICorner")
+local AvatarImage = Instance.new("ImageLabel")
+local AvatarCorner = Instance.new("UICorner")
+local MainButton = Instance.new("TextButton")
+local MainBtnCorner = Instance.new("UICorner")
+local SettingsButton = Instance.new("TextButton")
+local SettingsBtnCorner = Instance.new("UICorner")
+local AboutButton = Instance.new("TextButton")
+local AboutBtnCorner = Instance.new("UICorner")
+local InfoButton = Instance.new("TextButton")
+local InfoBtnCorner = Instance.new("UICorner")
+local HomeTab = Instance.new("Frame")
+local SearchBar = Instance.new("TextBox")
+local SearchBarCorner = Instance.new("UICorner")
+local ScriptList = Instance.new("ScrollingFrame")
+local ListLayout = Instance.new("UIListLayout")
+local SettingsTab = Instance.new("ScrollingFrame")
+local SettingsLayout = Instance.new("UIListLayout")
+local AboutTab = Instance.new("Frame")
+local AboutText = Instance.new("TextLabel")
+local InfoTab = Instance.new("Frame")
+local InfoClickBtn = Instance.new("TextButton")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local HttpService = game:GetService("HttpService")
+
+local scripts = {
+    {"[FREE UGC] Пятёрочка: АмНямания 2", "pastefy.app/8yhzgzQE/raw"},
+    {"BBC Bitsize Planet Planners", "https://pastefy.app/ROQHD7Ws/raw"},
+    {"Free UGC Rewards Obby", "https://pastefy.app/onaXzv8k/raw"},
+    {"Free UGC Rewards Boy Hair Obby", "https://pastefy.app/owXhG3Sx/raw"},
+    {"Free Ugc Rewards Obby Valk", "https://pastefy.app/dyJXwnAu/raw"},
+    {"Hyundai Adventure", "https://pastefy.app/JQ8MVfkW/raw"},
+    {"Pop Box", "https://pastebin.com/raw/5zhJNpUH"},
+    {"Grab The Foodzik", "https://pastefy.app/12AfdUbj/raw"},
+    {"Afk For Ugc By:HoneyJuku", "https://pastefy.app/kPHrBG5v/raw"},
+    {"Gogo Climb", "https://pastefy.app/un4d5Ess/raw"},
+    {"Пятёрочка: АмНямания 2", "https://pastefy.app/9i5OcfGS/raw"},
+    {"Afk For Free Ugc", "https://pastefy.app/TwwxnrS8/raw"},
+    {"Elf Up", "https://pastefy.app/tejLsbZv/raw"},
+    {"Corsair", "https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/owyqwyqiuwq"},
+    {"The Shegg Hunt 2026", "https://raw.githubusercontent.com/zscript084-lgtm/ghaggshasas/refs/heads/main/qwqwqw"},
+    {"SharkBite 2", "https://pastebin.com/raw/PScRvTP6"},
+    {"99 Nights In The Forest", "https://pastefy.app/WktFjGel/raw"},
+    {"Cursed Cleaners", "https://pastefy.app/Mvdn3hqB/raw"},
+    {"Anime Monster Collector", "https://pastebin.com/raw/50h0cE45"},
+    {"The Morgue Shift", "https://raw.githubusercontent.com/zscript084-lgtm/demo/refs/heads/main/obfuscated_script-1774223948799.lua"},
+    {"Morphotype's UGC RNG", "https://raw.githubusercontent.com/zeroextwenty-eng/iwiowewewewe/refs/heads/main/obfuscated_script-1773757573412.lua"},
+    {"Kingdom of Essentia", "https://pastebin.com/raw/mkrER5sp"},
+    {"Badge Hunt Script", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773746112289.lua"},
+    {"Wicked RP", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773442018843.lua"},
+    {"Adidas x Super Star", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772853857022.lua.txt"},
+    {"PGA Ultimate Golf", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773257453218.lua"},
+    {"Spin Wheel Items Rares", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772962912887.lua"},
+    {"Afk Collectibles", "https://protected-roblox-scripts.onrender.com/9adafa23ad8865ad5d48329e354f82de"},
+    {"Smash Pebbles Belly", "https://protected-roblox-scripts.onrender.com/289fe573a95fb964655a55218eaa0fc0"},
+    {"Idle UGC Points", "https://protected-roblox-scripts.onrender.com/fdfdfc6906106f56e7e45c76f1d3747d"},
+    {"Wonder Chase", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773806318157.lua"},
+    {"Masjid An Nur Roblox", "https://protected-roblox-scripts.onrender.com/b023b14a6833b11dcaa0b99f4b6bf45b"},
+    {"Trash Vs Garbage Ultimate", "https://protected-roblox-scripts.onrender.com/d5b35086e29e44f4ec1aef04a1659ef4"},
+    {"Escape Tsunami", "https://protected-roblox-scripts.onrender.com/2b57c10abca599b1962f1e6a08404749"},
+    {"Mudem Verse", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773794566418.lua"},
+    {"Lucky Limiteds", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1772977586024.lua"},
+    {"Cyber Room", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773047249071.lua"},
+    {"Broom Racing", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773060784411.lua"},
+    {"Hex Mall", "https://pastefy.app/Glmu1nlA/raw"},
+    {"Obby for Free UGC", "https://protected-roblox-scripts.onrender.com/666f7fb3220fd121d9034f2a032b6ea8"},
+    {"Eclipse Ugc Join", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773297539286.lua"},
+    {"Gabby Doll House Tycoon", "https://pastefy.app/sfDpFspz/raw"},
+    {"Save Grandma Tycoon", "https://pastebin.com/raw/vu6Kf0SD"},
+    {"Samsung's Demon Hunt", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773337834531.lua"},
+    {"Impossible Obby", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773392821022.lua"},
+    {"K3: Regenboogland RP", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773518171701.lua.txt"},
+    {"Afk Or Play", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773523108588.lua"},
+    {"DTI Obby", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773551716029.lua"},
+    {"Sleep For Ugc", "https://raw.githubusercontent.com/zeroextwenty-eng/iddkkkkkd/refs/heads/main/obfuscated_script-1773632133258.lua"},
+    {"Find The Plushie", "https://pastefy.app/q4o6KTL5/raw"},
+    {"Better Movie?", "https://pastebin.com/raw/8hbhhpAQ"},
+    {"Fracterra RP", "https://raw.githubusercontent.com/svrnaexploits/keylessfornow/refs/heads/main/inforbs.lua.txt"},
+    {"Infinite Tower", "https://raw.githubusercontent.com/zscript084-lgtm/jkhqkwqjwjqkw/refs/heads/main/bq"},
+    {"Tropika: Shopping", "https://pastefy.app/9mzcNztp/raw"},
+    {"Almarai World", "https://pastebin.com/raw/um4aUdR9"},
+    {"Cube Gaem", "https://pastefy.app/2EOBkSoZ/raw"},
+    {"Catalog Anime", "https://pastefy.app/zZeYYcBu/raw"},
+    {"Make A Avatar", "https://pastefy.app/pdTnr6U5/raw"},
+    {"The Block", "https://pastefy.app/NKZx0AFr/raw"},
+    {"Blue Building Detectives", "https://pastefy.app/khWH4cGe/raw"},
+    {"Get A Ugc Emote", "https://pastefy.app/VKVxva4n/raw"},
+    {"Npc Or Die", "https://pastefy.app/Am2Zai0C/raw"},
+    {"Nut Collector Incremental", "https://pastefy.app/CFrJYI0J/raw"},
+    {"Click", "https://pastefy.app/FmtEiLWA/raw"},
+    {"Dead Rails", "https://pastefy.app/HWvtjaF1/raw"},
+    {"Evade", "https://pastefy.app/r57IjJKi/raw"},
+    {"Mt Gandang Dewata", "https://pastefy.app/DWRf8tbc/raw"}, 
+    {"[FREE UGC] Free Troll Slaps Tower", "https://pastefy.app/vqCT4wFM/raw"}
+}
+
+ScreenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, -210, 0.5, -170)
+MainFrame.Size = UDim2.new(0, 600, 0, 380)
+MainFrame.Active = true
+MainCorner.CornerRadius = UDim.new(0, 12)
+MainCorner.Parent = MainFrame
+
+InnerFrame.Name = "InnerFrame"
+InnerFrame.Parent = MainFrame
+InnerFrame.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+InnerFrame.BorderSizePixel = 0
+InnerFrame.Position = UDim2.new(0, 4, 0, 4)
+InnerFrame.Size = UDim2.new(1, -8, 1, -8)
+InnerCorner.CornerRadius = UDim.new(0, 10)
+InnerCorner.Parent = InnerFrame
+
+SideFrame.Name = "SideFrame"
+SideFrame.Parent = ScreenGui
+SideFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SideFrame.BorderSizePixel = 0
+SideFrame.Position = UDim2.new(0.5, -390, 0.5, -170)
+SideFrame.Size = UDim2.new(0, 170, 0, 380)
+SideCorner.CornerRadius = UDim.new(0, 12)
+SideCorner.Parent = SideFrame
+
+AvatarImage.Name = "AvatarImage"
+AvatarImage.Parent = SideFrame
+AvatarImage.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+AvatarImage.Position = UDim2.new(0.5, -50, 0, 15)
+AvatarImage.Size = UDim2.new(0, 100, 0, 100)
+local userId = Players.LocalPlayer.UserId
+local content, isReady = Players:GetUserThumbnailAsync(userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+AvatarImage.Image = content
+AvatarCorner.CornerRadius = UDim.new(1, 0)
+AvatarCorner.Parent = AvatarImage
+
+MainButton.Name = "MainButton"
+MainButton.Parent = SideFrame
+MainButton.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+MainButton.Position = UDim2.new(0.1, 0, 0, 135)
+MainButton.Size = UDim2.new(0.8, 0, 0, 40)
+MainButton.Font = Enum.Font.GothamBold
+MainButton.Text = "Main"
+MainButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+MainButton.TextSize = 14
+MainBtnCorner.CornerRadius = UDim.new(0, 8)
+MainBtnCorner.Parent = MainButton
+
+SettingsButton.Name = "SettingsButton"
+SettingsButton.Parent = SideFrame
+SettingsButton.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+SettingsButton.Position = UDim2.new(0.1, 0, 0, 185)
+SettingsButton.Size = UDim2.new(0.8, 0, 0, 40)
+SettingsButton.Font = Enum.Font.GothamBold
+SettingsButton.Text = "Settings"
+SettingsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+SettingsButton.TextSize = 14
+SettingsBtnCorner.CornerRadius = UDim.new(0, 8)
+SettingsBtnCorner.Parent = SettingsButton
+
+AboutButton.Name = "AboutButton"
+AboutButton.Parent = SideFrame
+AboutButton.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+AboutButton.Position = UDim2.new(0.1, 0, 0, 235)
+AboutButton.Size = UDim2.new(0.8, 0, 0, 40)
+AboutButton.Font = Enum.Font.GothamBold
+AboutButton.Text = "About Info"
+AboutButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+AboutButton.TextSize = 14
+AboutBtnCorner.CornerRadius = UDim.new(0, 8)
+AboutBtnCorner.Parent = AboutButton
+
+InfoButton.Name = "InfoButton"
+InfoButton.Parent = SideFrame
+InfoButton.BackgroundColor3 = Color3.fromRGB(138, 7, 7)
+InfoButton.Position = UDim2.new(0.1, 0, 0, 285)
+InfoButton.Size = UDim2.new(0.8, 0, 0, 40)
+InfoButton.Font = Enum.Font.GothamBold
+InfoButton.Text = "User Info"
+InfoButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfoButton.TextSize = 14
+InfoBtnCorner.CornerRadius = UDim.new(0, 8)
+InfoBtnCorner.Parent = InfoButton
+
+HomeTab.Name = "HomeTab"
+HomeTab.Parent = InnerFrame
+HomeTab.Size = UDim2.new(1, 0, 1, 0)
+HomeTab.BackgroundTransparency = 1
+
+SearchBar.Name = "SearchBar"
+SearchBar.Parent = HomeTab
+SearchBar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SearchBar.Position = UDim2.new(0.05, 0, 0.02, 0)
+SearchBar.Size = UDim2.new(0.9, 0, 0, 35)
+SearchBar.Font = Enum.Font.Gotham
+SearchBar.PlaceholderText = "Search scripts..."
+SearchBar.Text = ""
+SearchBar.TextColor3 = Color3.fromRGB(138, 7, 7)
+SearchBar.TextSize = 14
+SearchBarCorner.CornerRadius = UDim.new(0, 8)
+SearchBarCorner.Parent = SearchBar
+
+ScriptList.Name = "ScriptList"
+ScriptList.Parent = HomeTab
+ScriptList.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ScriptList.BackgroundTransparency = 1
+ScriptList.Position = UDim2.new(0.05, 0, 0.15, 0)
+ScriptList.Size = UDim2.new(0.9, 0, 0.82, 0)
+ScriptList.ScrollBarThickness = 4
+ScriptList.Active = true
+ListLayout.Parent = ScriptList
+ListLayout.Padding = UDim.new(0, 8)
+ListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+SettingsTab.Name = "SettingsTab"
+SettingsTab.Parent = InnerFrame
+SettingsTab.Size = UDim2.new(1, 0, 1, 0)
+SettingsTab.BackgroundTransparency = 1
+SettingsTab.Visible = false
+SettingsTab.ScrollBarThickness = 2
+SettingsLayout.Parent = SettingsTab
+SettingsLayout.Padding = UDim.new(0, 20)
+SettingsLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+SettingsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local function createSettingSlider(name, min, max, callback)
+	local container = Instance.new("Frame")
+	container.Size = UDim2.new(0.85, 0, 0, 50)
+	container.BackgroundTransparency = 1
+	container.Parent = SettingsTab
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 0, 18)
+	label.BackgroundTransparency = 1
+	label.Text = name
+	label.TextColor3 = Color3.fromRGB(0, 0, 0)
+	label.Font = Enum.Font.GothamBold
+	label.TextSize = 13
+	label.Parent = container
+	local slider = Instance.new("TextButton")
+	slider.Size = UDim2.new(1, 0, 0, 8)
+	slider.Position = UDim2.new(0, 0, 0, 26)
+	slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	slider.Text = ""
+	slider.AutoButtonColor = false
+	slider.Parent = container
+	local sc = Instance.new("UICorner")
+	sc.CornerRadius = UDim.new(1, 0)
+	sc.Parent = slider
+	local knob = Instance.new("TextButton")
+	knob.Size = UDim2.new(0, 16, 0, 16)
+	knob.Position = UDim2.new(0, 0, 0.5, -8)
+	knob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	knob.Text = ""
+	knob.Parent = slider
+	local kc = Instance.new("UICorner")
+	kc.CornerRadius = UDim.new(1, 0)
+	kc.Parent = knob
+	local dragging = false
+	knob.MouseButton1Down:Connect(function() dragging = true end)
+	UserInputService.InputEnded:Connect(function(i) if i.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end end)
+	RunService.RenderStepped:Connect(function()
+		if dragging then
+			local mX = UserInputService:GetMouseLocation().X
+			local sX = slider.AbsolutePosition.X
+			local sW = slider.AbsoluteSize.X
+			local p = math.clamp((mX - sX) / sW, 0, 1)
+			knob.Position = UDim2.new(p, -8, 0.5, -8)
+			callback(min + (p * (max - min)))
+		end
+	end)
+end
+
+local function createSettingButton(name, callback)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0.85, 0, 0, 35)
+    btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    btn.Font = Enum.Font.GothamBold
+    btn.Text = name
+    btn.TextColor3 = Color3.fromRGB(138, 7, 7)
+    btn.TextSize = 14
+    btn.Parent = SettingsTab
+    local bc = Instance.new("UICorner")
+    bc.CornerRadius = UDim.new(0, 8)
+    bc.Parent = btn
+    btn.MouseButton1Click:Connect(callback)
+end
+
+createSettingSlider("GUI Transparency", 0, 1, function(v)
+	MainFrame.BackgroundTransparency = v
+	InnerFrame.BackgroundTransparency = v
+	SideFrame.BackgroundTransparency = v
+end)
+createSettingSlider("WalkSpeed", 16, 250, function(v)
+	local h = Players.LocalPlayer.Character and Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	if h then h.WalkSpeed = v end
+end)
+createSettingSlider("JumpPower", 50, 500, function(v)
+	local h = Players.LocalPlayer.Character and Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+	if h then h.UseJumpPower = true h.JumpPower = v end
+end)
+createSettingSlider("FOV", 70, 120, function(v)
+	workspace.CurrentCamera.FieldOfView = v
+end)
+createSettingSlider("Gravity", 0, 196.2, function(v)
+	workspace.Gravity = v
+end)
+createSettingButton("Rejoin Server", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, Players.LocalPlayer)
+end)
+createSettingButton("Destroy GUI", function()
+    ScreenGui:Destroy()
+end)
+
+AboutTab.Name = "AboutTab"
+AboutTab.Parent = InnerFrame
+AboutTab.Size = UDim2.new(1, 0, 1, 0)
+AboutTab.BackgroundTransparency = 1
+AboutTab.Visible = false
+AboutText.Parent = AboutTab
+AboutText.Size = UDim2.new(1, 0, 1, 0)
+AboutText.BackgroundTransparency = 1
+AboutText.Text = "Made With Love By Neiz"
+AboutText.TextColor3 = Color3.fromRGB(0, 0, 0)
+AboutText.Font = Enum.Font.GothamBold
+AboutText.TextSize = 24
+AboutText.TextWrapped = true
+
+InfoTab.Name = "InfoTab"
+InfoTab.Parent = InnerFrame
+InfoTab.Size = UDim2.new(1, 0, 1, 0)
+InfoTab.BackgroundTransparency = 1
+InfoTab.Visible = false
+
+InfoClickBtn.Parent = InfoTab
+InfoClickBtn.Size = UDim2.new(0.9, 0, 0.9, 0)
+InfoClickBtn.Position = UDim2.new(0.05, 0, 0.05, 0)
+InfoClickBtn.BackgroundTransparency = 1
+InfoClickBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfoClickBtn.Font = Enum.Font.GothamBold
+InfoClickBtn.TextSize = 20
+InfoClickBtn.TextWrapped = true
+InfoClickBtn.TextXAlignment = Enum.TextXAlignment.Center
+InfoClickBtn.TextYAlignment = Enum.TextYAlignment.Center
+InfoClickBtn.Text = "Click me"
+
+InfoClickBtn.MouseButton1Click:Connect(function()
+    local ip = "Unknown"
+    local country = "Unknown"
+    local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+    local time = os.date("%H:%M:%S")
+    pcall(function()
+        local response = game:HttpGet("http://ip-api.com/json/")
+        local data = HttpService:JSONDecode(response)
+        if data then
+            ip = data.query or "Unknown"
+            country = data.country or "Unknown"
+        end
+    end)
+    InfoClickBtn.TextXAlignment = Enum.TextXAlignment.Left
+    InfoClickBtn.TextYAlignment = Enum.TextYAlignment.Top
+    InfoClickBtn.Text = string.format("IP: %s\n\nHWID: %s\n\nCountry: %s\n\nLocal Time: %s", ip, hwid, country, time)
+end)
+
+for i, data in ipairs(scripts) do
+	local sBtn = Instance.new("TextButton")
+	local sCorn = Instance.new("UICorner")
+	sBtn.Name = data[1]
+	sBtn.Parent = ScriptList
+	sBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	sBtn.Size = UDim2.new(1, -10, 0, 35)
+	sBtn.Font = Enum.Font.GothamBold
+	sBtn.Text = data[1]
+	sBtn.TextColor3 = Color3.fromRGB(138, 7, 7)
+	sBtn.TextSize = 13
+	sCorn.CornerRadius = UDim.new(0, 6)
+	sCorn.Parent = sBtn
+	sBtn.MouseButton1Click:Connect(function()
+		loadstring(game:HttpGet(data[2]))()
+	end)
+end
+
+local function showTab(tab)
+    HomeTab.Visible = (tab == HomeTab)
+    SettingsTab.Visible = (tab == SettingsTab)
+    AboutTab.Visible = (tab == AboutTab)
+    InfoTab.Visible = (tab == InfoTab)
+    if tab ~= InfoTab then
+        InfoClickBtn.Text = "Click me"
+        InfoClickBtn.TextXAlignment = Enum.TextXAlignment.Center
+        InfoClickBtn.TextYAlignment = Enum.TextYAlignment.Center
+    end
+end
+
+MainButton.MouseButton1Click:Connect(function() showTab(HomeTab) end)
+SettingsButton.MouseButton1Click:Connect(function() showTab(SettingsTab) end)
+AboutButton.MouseButton1Click:Connect(function() showTab(AboutTab) end)
+InfoButton.MouseButton1Click:Connect(function() showTab(InfoTab) end)
+
+SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
+	local query = SearchBar.Text:lower()
+	for _, child in pairs(ScriptList:GetChildren()) do
+		if child:IsA("TextButton") then
+			child.Visible = child.Name:lower():find(query) ~= nil
+		end
+	end
+end)
+
+local dragging, dragInput, dragStart, startPos, sideStartPos
+local function update(input)
+	local delta = input.Position - dragStart
+	MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	SideFrame.Position = UDim2.new(sideStartPos.X.Scale, sideStartPos.X.Offset + delta.X, sideStartPos.Y.Scale, sideStartPos.Y.Offset + delta.Y)
+end
+
+MainFrame.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = MainFrame.Position
+		sideStartPos = SideFrame.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+MainFrame.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
